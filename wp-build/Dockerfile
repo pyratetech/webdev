@@ -87,7 +87,11 @@ RUN set -ex; \
 		mkdir "wp-content/$dir"; \
 	done; \
 	chown -R www-data:www-data wp-content; \
-	chmod -R 777 wp-content
+	chmod -R 777 wp-content; \
+	curl -O "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"; \
+	chmod +x wp-cli.phar; \
+	mv wp-cli.phar /usr/local/bin/wp; \
+	echo "zoiks..." 
 
 COPY custom-pyratetech /usr/src/wordpress/wp-content/plugins/custom-pyratetech/
 
